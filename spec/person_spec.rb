@@ -1,4 +1,4 @@
-require 'spec_helper'
+rsrequire 'spec_helper'
 
 describe 'Person' do
 
@@ -44,8 +44,17 @@ describe 'Person' do
       person.add_email "joe@foo.com"
       person.add_email "joe.bloggs@work.com"
       person.remove_email(0)
-      expect(person.emails).to eq(["joe@foo.com"])
-      end
+      expect(person.emails).to eq(["joe.bloggs@work.com"])
+    end
+
+     it "should display the required info for the user in a string output" do
+      person = Person.new "joe", "bloggs", "1 Jan 1990"
+      person.add_email "joe@foo.com"
+      person.add_phone "07712345678"
+      person.add_phone "02012345678"
+      expect(person.to_s).to eq("Joe Bloggs was born on 1990-01-01. \n Their email addresses are: [\"joe@foo.com\"].\n Their phone numbers are [\"07712345678\", \"02012345678\"]")
+    end
+
   end
 end
 
