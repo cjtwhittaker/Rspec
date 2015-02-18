@@ -1,6 +1,7 @@
+require './application'
+
 require 'rspec'
 
-require './application'
 
 RSpec.configure do|config|
 	config.color = true
