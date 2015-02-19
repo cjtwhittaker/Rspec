@@ -1,4 +1,4 @@
-rsrequire 'spec_helper'
+require 'spec_helper'
 
 describe 'Person' do
 
@@ -40,6 +40,14 @@ describe 'Person' do
     end
 
     it "should be able to remove an email address" do
+      person = Person.new "joe", "bloggs", "1 Jan 1990"
+      person.add_email "joe@foo.com"
+      person.add_email "joe.bloggs@work.com"
+      person.remove_email(0)
+      expect(person.emails).to eq(["joe.bloggs@work.com"])
+    end
+
+    it "should be able to remove a phone number" do
       person = Person.new "joe", "bloggs", "1 Jan 1990"
       person.add_email "joe@foo.com"
       person.add_email "joe.bloggs@work.com"
